@@ -9,7 +9,8 @@ def get_weather_data(city, country):
 
 	response = requests.get(url)
 
-	current_json = json.loads(response)
+	# current_json = json.loads(response)
+	current_json = response.json()
 	weather_data = current_data['current']
 
 	location_name = f"{weather_data['city']['@name']}, {weather_data['city']['country']}"
