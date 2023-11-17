@@ -1,9 +1,9 @@
-from ninja import Schema, Field
+from ninja import Schema
 
 
 class WeatherInSchema(Schema):
-    city: str = Field(..., max_length=20)
-    country: str = Field(..., max_length=20)
+    city: str 
+    country: str 
 
 
 class WeatherOutSchema(Schema):
