@@ -1,6 +1,7 @@
 from django.conf import settings
 import requests
 import json
+from ninja.errors import HttpError
 
 
 def get_weather_data(city, country):
@@ -9,7 +10,9 @@ def get_weather_data(city, country):
 
 	response = requests.get(url)
 
-	if response.status_code == 200:
+	if response.status_code == 503:
+            raise HttpError(503, "OpenWeatherMap API is currently unavailable. Please try again later.")
+	elif response.status_code == 200:
 		weather_data = response.json()
 
 	temp_min = weather_data['main']['temp_min']
