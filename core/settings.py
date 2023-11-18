@@ -68,7 +68,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'weather',
         'USER': 'behradpeikani',
-        'PASSWORD': 'Smilely21!!!',
+        'PASSWORD': 'yourpassword',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -119,5 +119,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # API Key from OpenWeatherMap
-WEATHER_API_KEY = '12892e11d6502a7193a1a0b3eecba380'
+WEATHER_API_KEY = 'your_api_key'
 
