@@ -1,0 +1,35 @@
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:15.4
+    environment:
+      - POSTGRES_DB=weather
+      - POSTGRES_USER=behradpeikani
+      - POSTGRES_PASSWORD=yourpassword
+    networks:
+      - main
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - weather_volume:/var/lib/postgresql/data
+
+  app:
+    build: .
+    command: sh -c "python manage.py migrate && gunicorn core.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - .:/src/
+    depends_on:
+      - postgres
+    expose:
+      - "8000"
+    networks: 
+      - main
+    restart: always
+
+
+networks:
+  main:
+volumes:
+  weather_volume:
